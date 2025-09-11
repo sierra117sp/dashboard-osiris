@@ -52,6 +52,7 @@
     "@types/recharts": "^1.8.29",
     "@types/swagger-ui-express": "^4.1.8",
     "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.6"
+    "postcss": "^8.5.6",
+    "serve": "^14.2.5"
   }
 }
