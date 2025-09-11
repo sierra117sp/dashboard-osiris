@@ -1,0 +1,58 @@
+openapi: 3.0.0
+info:
+  title: Osiris-Dashboard API
+  version: 1.0.0
+  description: API profesional para el dashboard financiero Osiris-Dashboard
+servers:
+  - url: http://localhost:4000
+paths:
+  /api/users/register:
+    post:
+      summary: Registro de usuario
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '201':
+          description: Usuario registrado exitosamente
+  /api/users/login:
+    post:
+      summary: Login de usuario
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Login exitoso y retorno de JWT
+  /api/transactions:
+    get:
+      summary: Obtener transacciones (requiere JWT)
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Lista de transacciones
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
